@@ -113,3 +113,5 @@ convert $image_array[j] -quality 100 \( -crop 3x3@ +repage -delete 0,1,2,3,4,5,7
 convert $image_array[j] -quality 100 \( -crop 3x3@ +repage -delete 0,1,2,3,4,5,6,8 $image_array[j] \) -gravity South  -compose Over -composite  ~/Downloads/imagini/completare/$image_array[j]
 convert $image_array[j] -quality 100 \( -crop 3x3@ +repage -delete 0,1,2,3,4,5,6,8 $image_array[j] \) -gravity SouthEast  -compose Over -composite  ~/Downloads/imagini/completare/$image_array[j];
 done
+
+mencoder mf://*.jpg -mf w=1280:h=720:fps=25:type=jpg -ovc x264 -x264encopts subq=6:partitions=all:8x8dct:me=umh:frameref=5:bframes=3:b_pyramid=normal:weight_b -oac copy -audiofile audio.mp3 -o animation.avi
